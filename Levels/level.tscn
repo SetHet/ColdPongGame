@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://7hyo6fpp2n1h"]
+
+[ext_resource type="PackedScene" uid="uid://h7npp3ss5o7y" path="res://Player/player.tscn" id="1_lsecn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66nrd"]
+size = Vector2(720, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqv41"]
+size = Vector2(20, 600)
+
+[node name="Level" type="Node2D"]
+
+[node name="Wall Derecha" type="Node2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Derecha"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Derecha/StaticBody2D"]
+shape = SubResource("RectangleShape2D_66nrd")
+
+[node name="ColorRect" type="ColorRect" parent="Wall Derecha"]
+offset_left = -360.0
+offset_top = -25.0
+offset_right = 360.0
+offset_bottom = 25.0
+color = Color(6.73831e-07, 0.66566, 0.141164, 1)
+
+[node name="Wall Derecha2" type="Node2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Derecha2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Derecha2/StaticBody2D"]
+shape = SubResource("RectangleShape2D_66nrd")
+
+[node name="ColorRect" type="ColorRect" parent="Wall Derecha2"]
+offset_left = -360.0
+offset_top = -25.0
+offset_right = 360.0
+offset_bottom = 25.0
+color = Color(6.73831e-07, 0.66566, 0.141164, 1)
+
+[node name="Arco izq" type="Node2D" parent="."]
+position = Vector2(-370, 0)
+
+[node name="Area2D" type="Area2D" parent="Arco izq"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arco izq/Area2D"]
+shape = SubResource("RectangleShape2D_xqv41")
+
+[node name="Arco der" type="Node2D" parent="."]
+position = Vector2(370, 0)
+
+[node name="Area2D" type="Area2D" parent="Arco der"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arco der/Area2D"]
+shape = SubResource("RectangleShape2D_xqv41")
+
+[node name="Player" parent="." instance=ExtResource("1_lsecn")]
+position = Vector2(-350, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
