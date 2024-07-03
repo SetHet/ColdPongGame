@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://7hyo6fpp2n1h"]
+[gd_scene load_steps=8 format=3 uid="uid://7hyo6fpp2n1h"]
 
+[ext_resource type="Texture2D" uid="uid://c3u7i6drow1ce" path="res://Others/BorderSun.png" id="1_afba3"]
 [ext_resource type="PackedScene" uid="uid://h7npp3ss5o7y" path="res://Player/player.tscn" id="1_lsecn"]
+[ext_resource type="PackedScene" uid="uid://cxak0g58c5rbv" path="res://Ball/ball.tscn" id="2_3fsv4"]
+[ext_resource type="Texture2D" uid="uid://b22l248adr4us" path="res://Others/BorderEarth.png" id="2_f0uxr"]
+[ext_resource type="Texture2D" uid="uid://blndn6loe0528" path="res://Others/Space0.png" id="3_j4q0c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66nrd"]
 size = Vector2(720, 50)
@@ -10,35 +14,40 @@ size = Vector2(20, 600)
 
 [node name="Level" type="Node2D"]
 
-[node name="Wall Derecha" type="Node2D" parent="."]
+[node name="Wall Arriba" type="Node2D" parent="."]
 position = Vector2(0, -300)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Wall Derecha"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Arriba"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Derecha/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Arriba/StaticBody2D"]
 shape = SubResource("RectangleShape2D_66nrd")
 
-[node name="ColorRect" type="ColorRect" parent="Wall Derecha"]
-offset_left = -360.0
-offset_top = -25.0
-offset_right = 360.0
-offset_bottom = 25.0
-color = Color(6.73831e-07, 0.66566, 0.141164, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Wall Arriba"]
+z_index = 6
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(22, -91)
+scale = Vector2(2, 2)
+texture = ExtResource("1_afba3")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 128)
 
-[node name="Wall Derecha2" type="Node2D" parent="."]
+[node name="Wall Abajo" type="Node2D" parent="."]
 position = Vector2(0, 300)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Wall Derecha2"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Abajo"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Derecha2/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Abajo/StaticBody2D"]
 shape = SubResource("RectangleShape2D_66nrd")
 
-[node name="ColorRect" type="ColorRect" parent="Wall Derecha2"]
-offset_left = -360.0
-offset_top = -25.0
-offset_right = 360.0
-offset_bottom = 25.0
-color = Color(6.73831e-07, 0.66566, 0.141164, 1)
+[node name="Sprite2D" type="Sprite2D" parent="Wall Abajo"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-1, 103)
+scale = Vector2(2, 2)
+texture = ExtResource("2_f0uxr")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 128)
 
 [node name="Arco izq" type="Node2D" parent="."]
 position = Vector2(-370, 0)
@@ -60,3 +69,11 @@ shape = SubResource("RectangleShape2D_xqv41")
 position = Vector2(-350, 2)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ball" parent="." instance=ExtResource("2_3fsv4")]
+
+[node name="Space0" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(0, 1)
+scale = Vector2(8.96, 8.96)
+texture = ExtResource("3_j4q0c")

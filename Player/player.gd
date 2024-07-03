@@ -11,4 +11,6 @@ func _physics_process(delta):
 	if Input.is_action_pressed("accion_down"):
 		direction.y += 1
 
-	move_and_collide(direction * speed * delta)
+	lock_rotation = true
+	linear_velocity = direction * speed
+	#move_and_collide(direction * speed * delta)

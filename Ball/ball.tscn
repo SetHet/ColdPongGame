@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxak0g58c5rbv"]
+
+[ext_resource type="Texture2D" uid="uid://bg0su6mf32kyi" path="res://Ball/BallMoon.png" id="1_ncqkc"]
+[ext_resource type="Script" path="res://Ball/ball.gd" id="1_ospmc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fk4vw"]
+radius = 16.0
+
+[node name="Ball" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_ospmc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_fk4vw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_ncqkc")
