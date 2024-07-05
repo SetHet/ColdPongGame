@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Ball
 
 var speed = 0
 var maxSpeed = 500
