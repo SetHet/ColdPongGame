@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://7hyo6fpp2n1h"]
+[gd_scene load_steps=9 format=3 uid="uid://7hyo6fpp2n1h"]
 
 [ext_resource type="Texture2D" uid="uid://c3u7i6drow1ce" path="res://Others/BorderSun.png" id="1_afba3"]
 [ext_resource type="PackedScene" uid="uid://h7npp3ss5o7y" path="res://Player/player.tscn" id="1_lsecn"]
 [ext_resource type="PackedScene" uid="uid://cxak0g58c5rbv" path="res://Ball/ball.tscn" id="2_3fsv4"]
 [ext_resource type="Texture2D" uid="uid://b22l248adr4us" path="res://Others/BorderEarth.png" id="2_f0uxr"]
 [ext_resource type="Texture2D" uid="uid://blndn6loe0528" path="res://Others/Space0.png" id="3_j4q0c"]
+[ext_resource type="PackedScene" uid="uid://bxx5kndjk02lr" path="res://Oponente/oponente.tscn" id="6_6pp2x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66nrd"]
 size = Vector2(720, 50)
@@ -77,3 +78,7 @@ z_index = -100
 position = Vector2(0, 1)
 scale = Vector2(8.96, 8.96)
 texture = ExtResource("3_j4q0c")
+
+[node name="Player2" parent="." instance=ExtResource("6_6pp2x")]
+position = Vector2(350, 0)
+rotation = 3.14159

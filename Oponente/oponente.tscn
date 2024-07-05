@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxx5kndjk02lr"]
+
+[ext_resource type="Script" path="res://Oponente/oponente.gd" id="1_a7xx1"]
+[ext_resource type="Texture2D" uid="uid://dyb0u3hce0kel" path="res://Bandeas/BanderaRussia.png" id="2_btdg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbdqi"]
+size = Vector2(32, 128)
+
+[node name="Player" type="RigidBody2D"]
+mass = 0.01
+gravity_scale = 0.0
+script = ExtResource("1_a7xx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cbdqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = -1.57079
+texture = ExtResource("2_btdg4")
