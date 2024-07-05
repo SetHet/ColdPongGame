@@ -3,6 +3,7 @@ extends RigidBody2D
 var speed = 0
 var maxSpeed = 500
 var minSpeed = 200
+var startSpeed = 350
 var scaleAddSpeedPerContact = 100
 var frictionColliders = 0.1
 var angleDeath = 0.8
@@ -14,7 +15,7 @@ func _ready():
 	ResetBall()
 	
 func ResetBall():
-	speed = minSpeed
+	speed = startSpeed
 	direction.x = [-1, 1][randi() % 2]
 	
 	direction.y = randf_range(-0.5, 0.5)
