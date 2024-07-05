@@ -14,7 +14,7 @@ func _physics_process(delta):
 	#move_and_collide(direction * speed * delta)
 
 func GetDirection():
-	if abs(ball.position.y - position.y) > 25:
+	if abs(ball.position.y - position.y) > 30:
 		if ball.position.y > position.y:
 			return 1
 		else: 

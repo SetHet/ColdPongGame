@@ -10,8 +10,10 @@ var direction = Vector2.ZERO
 var is_moving = false
 
 func _ready():
-	
 	randomize()
+	ResetBall()
+	
+func ResetBall():
 	speed = minSpeed
 	direction.x = [-1, 1][randi() % 2]
 	
