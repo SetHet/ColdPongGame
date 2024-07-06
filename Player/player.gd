@@ -14,3 +14,7 @@ func _physics_process(delta):
 	lock_rotation = true
 	linear_velocity = direction * speed
 	#move_and_collide(direction * speed * delta)
+
+		
+
+

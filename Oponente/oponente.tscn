@@ -18,3 +18,9 @@ shape = SubResource("RectangleShape2D_cbdqi")
 texture_filter = 1
 rotation = -1.57079
 texture = ExtResource("2_btdg4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

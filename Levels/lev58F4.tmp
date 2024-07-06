@@ -1,0 +1,133 @@
+[gd_scene load_steps=12 format=3 uid="uid://7hyo6fpp2n1h"]
+
+[ext_resource type="Texture2D" uid="uid://c3u7i6drow1ce" path="res://Others/BorderSun.png" id="1_afba3"]
+[ext_resource type="PackedScene" uid="uid://h7npp3ss5o7y" path="res://Player/player.tscn" id="1_lsecn"]
+[ext_resource type="PackedScene" uid="uid://cxak0g58c5rbv" path="res://Ball/ball.tscn" id="2_3fsv4"]
+[ext_resource type="Texture2D" uid="uid://b22l248adr4us" path="res://Others/BorderEarth.png" id="2_f0uxr"]
+[ext_resource type="Texture2D" uid="uid://blndn6loe0528" path="res://Others/Space0.png" id="3_j4q0c"]
+[ext_resource type="Texture2D" uid="uid://dxaombhgjsti5" path="res://Others/LineLimit_Segmentated.png" id="3_qnqtn"]
+[ext_resource type="PackedScene" uid="uid://bxx5kndjk02lr" path="res://Oponente/oponente.tscn" id="6_6pp2x"]
+[ext_resource type="Script" path="res://Levels/level.gd" id="7_acxe5"]
+[ext_resource type="Script" path="res://Levels/Marcador.gd" id="9_47g0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66nrd"]
+size = Vector2(720, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xqv41"]
+size = Vector2(20, 600)
+
+[node name="Level" type="Node2D"]
+script = ExtResource("7_acxe5")
+
+[node name="Wall Arriba" type="Node2D" parent="."]
+position = Vector2(0, -300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Arriba"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Arriba/StaticBody2D"]
+shape = SubResource("RectangleShape2D_66nrd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall Arriba"]
+z_index = 6
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(22, -91)
+scale = Vector2(2, 2)
+texture = ExtResource("1_afba3")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 128)
+
+[node name="Wall Abajo" type="Node2D" parent="."]
+position = Vector2(0, 300)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall Abajo"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall Abajo/StaticBody2D"]
+shape = SubResource("RectangleShape2D_66nrd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall Abajo"]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-1, 103)
+scale = Vector2(2, 2)
+texture = ExtResource("2_f0uxr")
+region_enabled = true
+region_rect = Rect2(0, 0, 600, 128)
+
+[node name="Arco izq" type="Node2D" parent="."]
+position = Vector2(-380, 0)
+
+[node name="Area2D" type="Area2D" parent="Arco izq"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arco izq/Area2D"]
+shape = SubResource("RectangleShape2D_xqv41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arco izq"]
+z_index = -50
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_qnqtn")
+region_enabled = true
+region_rect = Rect2(0, 0, 2, 900)
+
+[node name="Arco der" type="Node2D" parent="."]
+position = Vector2(380, 0)
+
+[node name="Area2D" type="Area2D" parent="Arco der"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arco der/Area2D"]
+shape = SubResource("RectangleShape2D_xqv41")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arco der"]
+z_index = -10
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-8, 0)
+scale = Vector2(2, 2)
+texture = ExtResource("3_qnqtn")
+region_enabled = true
+region_rect = Rect2(0, 0, 2, 900)
+
+[node name="Player" parent="." instance=ExtResource("1_lsecn")]
+position = Vector2(-350, 2)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Ball" parent="." instance=ExtResource("2_3fsv4")]
+
+[node name="Space0" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(0, 1)
+scale = Vector2(8.96, 8.96)
+texture = ExtResource("3_j4q0c")
+
+[node name="Oponente" parent="." instance=ExtResource("6_6pp2x")]
+position = Vector2(350, 0)
+rotation = 3.14159
+
+[node name="Marcador" type="Label" parent="."]
+z_index = 100
+z_as_relative = false
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -320.0
+offset_right = 250.0
+offset_bottom = -280.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "X - X"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("9_47g0o")
+
+[connection signal="body_entered" from="Arco izq/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Arco der/Area2D" to="." method="_on_area_2d_body_entered_derecha"]

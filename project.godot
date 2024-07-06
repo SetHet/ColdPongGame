@@ -10,11 +10,10 @@ config_version=5
 
 [application]
 
-config/name="SetHetPong"
+config/name="ColdPong"
 config/description="Practice Pong Game"
 run/main_scene="res://Levels/level.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-config/icon="res://icon.svg"
 
 [display]
 

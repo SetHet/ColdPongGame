@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cxak0g58c5rbv"]
+[gd_scene load_steps=7 format=3 uid="uid://cxak0g58c5rbv"]
 
 [ext_resource type="Texture2D" uid="uid://bg0su6mf32kyi" path="res://Ball/BallMoon.png" id="1_ncqkc"]
 [ext_resource type="Script" path="res://Ball/ball.gd" id="1_ospmc"]
+[ext_resource type="AudioStream" uid="uid://ovgur20q4d54" path="res://Sonidos/315723__renovatio871__tonal_impact_g.wav" id="3_c26v7"]
+[ext_resource type="AudioStream" uid="uid://c6ygfbhugh5jh" path="res://Sonidos/525101__jomse__plasticimpactb3.wav" id="4_4fjmc"]
+[ext_resource type="AudioStream" uid="uid://dbljo3n0tck1d" path="res://Sonidos/718003__johnny25225__heavywobblyimpacthit_14.wav" id="5_fsukw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fk4vw"]
 radius = 16.0
@@ -16,3 +19,18 @@ shape = SubResource("CircleShape2D_fk4vw")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_ncqkc")
+
+[node name="AudioStart" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c26v7")
+volume_db = -5.0
+
+[node name="AudioImpactPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_c26v7")
+volume_db = -7.0
+
+[node name="AudioImpactWall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4fjmc")
+
+[node name="AudioGol" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_fsukw")
+volume_db = -3.0

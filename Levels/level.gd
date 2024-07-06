@@ -23,6 +23,7 @@ func RestartGame(timeout = 0):
 
 func _on_area_2d_body_entered(body):
 	if body is Ball:
+		body.get_node("AudioGol").play()
 		pointsOponente += 1
 		$Marcador.ActualizarMarcador(pointsPlayer, pointsOponente)
 		await get_tree().create_timer(timeout_gol).timeout
@@ -31,6 +32,7 @@ func _on_area_2d_body_entered(body):
 
 func _on_area_2d_body_entered_derecha(body):
 	if body is Ball:
+		body.get_node("AudioGol").play()
 		pointsPlayer += 1
 		$Marcador.ActualizarMarcador(pointsPlayer, pointsOponente)
 		await get_tree().create_timer(timeout_gol).timeout

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7hyo6fpp2n1h"]
+[gd_scene load_steps=14 format=3 uid="uid://7hyo6fpp2n1h"]
 
 [ext_resource type="Texture2D" uid="uid://c3u7i6drow1ce" path="res://Others/BorderSun.png" id="1_afba3"]
 [ext_resource type="PackedScene" uid="uid://h7npp3ss5o7y" path="res://Player/player.tscn" id="1_lsecn"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bxx5kndjk02lr" path="res://Oponente/oponente.tscn" id="6_6pp2x"]
 [ext_resource type="Script" path="res://Levels/level.gd" id="7_acxe5"]
 [ext_resource type="Script" path="res://Levels/Marcador.gd" id="9_47g0o"]
+[ext_resource type="AudioStream" uid="uid://bciremgb62645" path="res://Sonidos/495389__romariogrande__space-steps.wav" id="10_gupim"]
+[ext_resource type="Script" path="res://Levels/AudioStreamPlayer.gd" id="10_qrfrx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_66nrd"]
 size = Vector2(720, 50)
@@ -128,6 +130,14 @@ text = "X - X"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("9_47g0o")
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AudioListener2D"]
+stream = ExtResource("10_gupim")
+volume_db = -15.0
+script = ExtResource("10_qrfrx")
 
 [connection signal="body_entered" from="Arco izq/Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Arco der/Area2D" to="." method="_on_area_2d_body_entered_derecha"]

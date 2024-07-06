@@ -13,14 +13,17 @@ var is_moving = false
 
 func _ready():
 	randomize()
-	ResetBall()
+	ResetBall(false)
 	
-func ResetBall():
+	
+func ResetBall(audio = true):
 	speed = startSpeed
 	direction.x = [-1, 1][randi() % 2]
 	
 	direction.y = randf_range(-0.5, 0.5)
 	is_moving = true
+	if audio: $AudioStart.play()
+	
 	
 func _physics_process(delta):
 	if is_moving:
@@ -40,5 +43,12 @@ func _physics_process(delta):
 			if abs(newDirection.normalized().y) > angleDeath:
 				newDirection.y = sign(newDirection.y) * angleDeath
 			direction = newDirection.normalized()
+			
+			var coll = collide.get_collider()
+			if coll.name == "Player" or coll.name == "Oponente":
+				$AudioImpactPlayer.play()
+			if coll.name == "StaticBody2D":
+				$AudioImpactWall.play()
+
 			
 	
